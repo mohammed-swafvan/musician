@@ -45,6 +45,7 @@ class PlayListDb extends ChangeNotifier {
     await mostPlayedDb.clear();
 
     FavDbFun.favSongsNotifier.value.clear();
+    // ignore: use_build_context_synchronously
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SplashScreen()));
   }
 }

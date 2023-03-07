@@ -3,7 +3,6 @@ import 'package:musician/Screens/NowPlaying/NowPlaying.dart';
 import 'package:musician/controller/GetAllSongsController.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 import 'package:text_scroll/text_scroll.dart';
-
 import '../../Themes/Colors.dart';
 
 class MiniPlayer extends StatefulWidget {

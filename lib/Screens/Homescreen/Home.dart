@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:musician/Screens/FavouriteScreen/Favourite.dart';
 import 'package:musician/Screens/AllMusic/AllMusic.dart';
 import 'package:musician/Screens/Homescreen/slivers/Slivers.dart';
 import 'package:musician/Screens/Miniplayer/miniPlayer.dart';
 import 'package:musician/Screens/mostplayed/mostplayed.dart';
-import 'package:musician/Screens/SearchScreen/SearchSreen.dart';
 import 'package:musician/Themes/Colors.dart';
 import 'package:musician/Settings/Drawer/SettingsSideBar.dart';
 import 'package:musician/controller/GetAllSongsController.dart';
 import 'package:musician/Themes/BackGroundDesign.dart';
 import 'package:musician/Screens/Recently/Recently.dart';
-import 'package:musician/Screens/Homescreen/PlayListHome/playlists.dart';
 import '../../Themes/BackDropWidget.dart';
 
 class HomeScreen extends StatefulWidget {

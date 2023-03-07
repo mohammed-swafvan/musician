@@ -1,8 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-
 import 'body.dart';
 import 'header.dart';
-
 part 'message.g.dart';
 
 @JsonSerializable()

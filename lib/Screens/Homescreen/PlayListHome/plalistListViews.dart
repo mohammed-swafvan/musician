@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:musician/Lists/Lists.dart';
 import 'package:musician/Screens/PlayList/IndividualPlaylist.dart';
 import 'package:text_scroll/text_scroll.dart';
 
