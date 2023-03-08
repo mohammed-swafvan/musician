@@ -68,40 +68,45 @@ class _SearchScreenState extends State<SearchScreen> {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 18),
-                    child: Row(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.deepPurple[50],
-                            borderRadius: const BorderRadius.only(topLeft: Radius.circular(30), bottomLeft: Radius.circular(30)),
-                          ),
-                          height: 50,
-                          width: 45,
-                          child: const Padding(padding: EdgeInsets.only(left: 7.0), child: Icon(Icons.search)),
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: Row(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
                               color: Colors.deepPurple[50],
                               borderRadius:
-                                  const BorderRadius.only(bottomRight: Radius.circular(30), topRight: Radius.circular(30))),
-                          height: 50,
-                          width: 300,
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 5.0),
-                            child: TextField(
-                              onChanged: (value) => updatedList(value),
-                              textAlign: TextAlign.start,
-                              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                              decoration: const InputDecoration(
-                                  filled: true,
-                                  fillColor: Colors.transparent,
-                                  border: InputBorder.none,
-                                  hintText: 'Songs',
-                                  hintStyle: TextStyle(color: Colors.black87, fontSize: 18, fontWeight: FontWeight.w500)),
+                                  const BorderRadius.only(topLeft: Radius.circular(30), bottomLeft: Radius.circular(30)),
+                            ),
+                            height: 50,
+                            width: 45,
+                            child: const Padding(padding: EdgeInsets.only(left: 7.0), child: Icon(Icons.search)),
+                          ),
+                          Expanded(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.deepPurple[50],
+                                  borderRadius:
+                                      const BorderRadius.only(bottomRight: Radius.circular(30), topRight: Radius.circular(30))),
+                              height: 50,
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(),
+                                child: TextField(
+                                  onChanged: (value) => updatedList(value),
+                                  textAlign: TextAlign.start,
+                                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                                  decoration: const InputDecoration(
+                                      filled: true,
+                                      fillColor: Colors.transparent,
+                                      border: InputBorder.none,
+                                      hintText: 'Songs',
+                                      hintStyle: TextStyle(color: Colors.black87, fontSize: 18, fontWeight: FontWeight.w500)),
+                                ),
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                   const SizedBox(height: 20),
