@@ -10,19 +10,20 @@ class NoPlayList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var screenHeight = MediaQuery.of(context).size.height;
     return ValueListenableBuilder(
       valueListenable: Hive.box<SongsDataBase>('PlayListdb').listenable(),
       builder: (context, Box<SongsDataBase> value, child) {
         final playLists = Hive.box<SongsDataBase>('PlayListdb');
         return SizedBox(
-          height: 250,
+          height: screenHeight * 0.32,
           width: double.infinity,
           child: Column(
             children: [
-              const SizedBox(
-                height: 50,
+              SizedBox(
+                height: screenHeight * 0.06,
                 width: double.infinity,
-                child: Padding(
+                child: const Padding(
                   padding: EdgeInsets.only(left: 15),
                   child: Text(
                     'Musician',
@@ -43,7 +44,7 @@ class NoPlayList extends StatelessWidget {
                   },
                   child: Container(
                     decoration: BoxDecoration(color: componentsColor.withOpacity(0.6), borderRadius: BorderRadius.circular(20)),
-                    height: 190,
+                    height: screenHeight * 0.24,
                     width: double.infinity,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,

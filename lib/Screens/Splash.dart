@@ -30,8 +30,8 @@ class _SplashScreenState extends State<SplashScreen> {
           const BackdropWidget(),
           SafeArea(
             child: SizedBox(
-              height: double.infinity,
-              width: double.infinity,
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -73,6 +73,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> gotoHomeScreen() async {
     await Future.delayed(const Duration(milliseconds: 2100));
+    // ignore: use_build_context_synchronously
     Navigator.of(context).pushReplacement(MaterialPageRoute(
       builder: (context) => const HomeScreen(),
     ));

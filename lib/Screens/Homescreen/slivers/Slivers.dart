@@ -10,7 +10,11 @@ class SliverAppBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var screenHeight = MediaQuery.of(context).size.height;
     return SliverAppBar(
+      backgroundColor: Colors.transparent,
+      collapsedHeight: screenHeight * 0.40,
+      expandedHeight: screenHeight * 0.40,
       leading: IconButton(
         onPressed: () {
           globalKey.currentState!.openDrawer();
@@ -21,9 +25,6 @@ class SliverAppBarWidget extends StatelessWidget {
           color: Colors.white38,
         ),
       ),
-      backgroundColor: Colors.transparent,
-      collapsedHeight: 310,
-      expandedHeight: 310,
       flexibleSpace: Column(
         children: [
           ListTile(

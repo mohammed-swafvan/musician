@@ -3,6 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:just_audio_background/just_audio_background.dart';
 import 'package:musician/Provider/SongModelProvider.dart';
 import 'package:musician/Screens/Splash.dart';
+import 'package:musician/Themes/Colors.dart';
 import 'package:provider/provider.dart';
 import 'DB/Models/Song_model.dart';
 
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
+        primaryColor: componentsColor,
       ),
       home: const SplashScreen(),
     );

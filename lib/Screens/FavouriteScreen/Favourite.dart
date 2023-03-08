@@ -34,12 +34,12 @@ class FavouriteScreen extends StatelessWidget {
                           child: Image.network(
                             'https://www.itl.cat/pngfile/big/15-157154_music-wallpaper-photo-on-wallpaper-hd-1191-x.jpg',
                             width: double.infinity,
-                            height: 230,
+                            height: MediaQuery.of(context).size.height * 0.3,
                             fit: BoxFit.cover,
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 25),
+                          padding: const EdgeInsets.only(top: 20),
                           child: ListTile(
                             leading: IconButton(
                               onPressed: () {
@@ -66,7 +66,7 @@ class FavouriteScreen extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 180, left: 20),
+                          padding: const EdgeInsets.only(top: 170, left: 20),
                           child: Row(
                             children: const [
                               Icon(
@@ -92,7 +92,7 @@ class FavouriteScreen extends StatelessWidget {
                       ],
                     ),
                     SizedBox(
-                        width: double.infinity,
+                        width: MediaQuery.of(context).size.width,
                         child: ValueListenableBuilder(
                           valueListenable: FavDbFun.favSongsNotifier,
                           builder: (ctx, List<SongModel> favData, Widget? child) {

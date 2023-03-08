@@ -26,6 +26,7 @@ class FavDbFun {
   static addSongs(SongModel song) async {
     musicDb.add(song.id);
     favSongsNotifier.value.add(song);
+    // ignore: invalid_use_of_protected_member, invalid_use_of_visible_for_testing_member
     FavDbFun.favSongsNotifier.notifyListeners();
   }
 

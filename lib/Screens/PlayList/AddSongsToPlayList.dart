@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:musician/DB/functions/PlayListDb.dart';
 import 'package:musician/controller/GetAllSongsController.dart';
@@ -21,6 +22,8 @@ class _AddSongsToPlayListState extends State<AddSongsToPlayList> {
   final OnAudioQuery audioQuery = OnAudioQuery();
   @override
   Widget build(BuildContext context) {
+    var screenHeight = MediaQuery.of(context).size.height;
+    var screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
         backgroundColor: bgColor,
         body: FutureBuilder<List<SongModel>>(
@@ -42,108 +45,100 @@ class _AddSongsToPlayListState extends State<AddSongsToPlayList> {
                 const Blue(),
                 const Purple(),
                 const BackdropWidget(),
-                SingleChildScrollView(
-                    child: Column(
+                ListView(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 30.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          ListTile(
-                            leading: IconButton(
-                              icon: const Icon(
-                                Icons.arrow_back_ios_new_rounded,
-                                size: 28,
-                                color: Colors.white38,
-                              ),
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                            ),
-                            title: const Text(
-                              'Add Songs',
-                              style: TextStyle(
-                                shadows: [Shadow(offset: Offset(4.0, 4.0), blurRadius: 3.0, color: Colors.white10)],
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white,
-                                fontSize: 24,
-                              ),
-                            ),
+                      padding: const EdgeInsets.only(top: 10.0),
+                      child: ListTile(
+                        leading: IconButton(
+                          icon: const Icon(
+                            Icons.arrow_back_ios_new_rounded,
+                            size: 28,
+                            color: Colors.white38,
                           ),
-                          SizedBox(
-                              height: 900,
-                              child: ListView.builder(
-                                  controller: ScrollController(keepScrollOffset: true),
-                                  itemCount: item.data!.length,
-                                  itemBuilder: (context, index) {
-                                    return ListTile(
-                                      minVerticalPadding: 10,
-                                      leading: QueryArtworkWidget(
-                                          nullArtworkWidget: Container(
-                                              height: 60,
-                                              width: 55,
-                                              decoration: BoxDecoration(
-                                                  color: const Color.fromARGB(255, 80, 20, 91),
-                                                  borderRadius: BorderRadius.circular(10)),
-                                              child: Icon(
-                                                Icons.music_note_rounded,
-                                                size: 30,
-                                                color: Colors.purple[100],
-                                              )),
-                                          artworkHeight: 60,
-                                          artworkWidth: 55,
-                                          artworkBorder: BorderRadius.circular(10),
-                                          id: item.data![index].id,
-                                          type: ArtworkType.AUDIO),
-                                      title: Text(
-                                        item.data![index].displayNameWOExt,
-                                        style: const TextStyle(
-                                            fontWeight: FontWeight.w500, color: Colors.white, overflow: TextOverflow.ellipsis),
-                                      ),
-                                      subtitle: Text(
-                                        '${item.data![index].artist == '<unknown>' ? 'unknown Artist' : item.data![index].artist}',
-                                        style: const TextStyle(
-                                            fontWeight: FontWeight.w300,
-                                            color: Colors.white60,
-                                            overflow: TextOverflow.ellipsis,
-                                            fontSize: 12),
-                                      ),
-                                      trailing: !widget.playList.isValue(item.data![index].id)
-                                          ? IconButton(
-                                              onPressed: () {
-                                                GetAllSongController.songscopy = item.data!;
-                                                setState(() {
-                                                  songsToPlayList(
-                                                    item.data![index],
-                                                  );
-                                                  PlayListDb.playListNotifier.notifyListeners();
-                                                });
-                                              },
-                                              icon: const Icon(
-                                                Icons.add,
-                                                color: Colors.white70,
-                                                size: 26,
-                                              ))
-                                          : IconButton(
-                                              onPressed: () {
-                                                setState(() {
-                                                  songDeletedFromPlaylist(item.data![index]);
-                                                });
-                                              },
-                                              icon: const Icon(
-                                                Icons.remove,
-                                                color: Colors.white70,
-                                                size: 26,
-                                              )),
-                                      onTap: () {},
-                                    );
-                                  }))
-                        ],
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                        ),
+                        title: const Text(
+                          'Add Songs',
+                          style: TextStyle(
+                            shadows: [Shadow(offset: Offset(4.0, 4.0), blurRadius: 3.0, color: Colors.white10)],
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white,
+                            fontSize: 24,
+                          ),
+                        ),
                       ),
                     ),
+                    ListView.builder(
+                        shrinkWrap: true,
+                        controller: ScrollController(keepScrollOffset: true),
+                        itemCount: item.data!.length,
+                        itemBuilder: (context, index) {
+                          return ListTile(
+                            leading: QueryArtworkWidget(
+                                nullArtworkWidget: Container(
+                                    height: screenHeight * 0.1,
+                                    width: screenWidth * 0.14,
+                                    decoration: BoxDecoration(
+                                        color: const Color.fromARGB(255, 80, 20, 91), borderRadius: BorderRadius.circular(10)),
+                                    child: Icon(
+                                      Icons.music_note_rounded,
+                                      size: 30,
+                                      color: Colors.purple[100],
+                                    )),
+                                artworkHeight: screenHeight * 0.1,
+                                artworkWidth: screenWidth * 0.14,
+                                artworkBorder: BorderRadius.circular(10),
+                                id: item.data![index].id,
+                                type: ArtworkType.AUDIO),
+                            title: Text(
+                              item.data![index].displayNameWOExt,
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.w500, color: Colors.white, overflow: TextOverflow.ellipsis),
+                            ),
+                            subtitle: Text(
+                              '${item.data![index].artist == '<unknown>' ? 'unknown Artist' : item.data![index].artist}',
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.w300,
+                                  color: Colors.white60,
+                                  overflow: TextOverflow.ellipsis,
+                                  fontSize: 12),
+                            ),
+                            trailing: !widget.playList.isValue(item.data![index].id)
+                                ? IconButton(
+                                    onPressed: () {
+                                      GetAllSongController.songscopy = item.data!;
+                                      setState(() {
+                                        songsToPlayList(
+                                          item.data![index],
+                                        );
+                                        // ignore: invalid_use_of_visible_for_testing_member, invalid_use_of_protected_member
+                                        PlayListDb.playListNotifier.notifyListeners();
+                                      });
+                                    },
+                                    icon: const Icon(
+                                      Icons.add,
+                                      color: Colors.white70,
+                                      size: 26,
+                                    ))
+                                : IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        songDeletedFromPlaylist(item.data![index]);
+                                      });
+                                    },
+                                    icon: const Icon(
+                                      Icons.remove,
+                                      color: Colors.white70,
+                                      size: 26,
+                                    )),
+                            onTap: () {},
+                          );
+                        })
                   ],
-                )),
+                ),
               ],
             );
           },
@@ -152,7 +147,7 @@ class _AddSongsToPlayListState extends State<AddSongsToPlayList> {
 
   void songsToPlayList(SongModel song) {
     widget.playList.add(song.id);
-    final addedToPlayList = SnackBar( 
+    final addedToPlayList = SnackBar(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       behavior: SnackBarBehavior.floating,
       backgroundColor: componentsColor,

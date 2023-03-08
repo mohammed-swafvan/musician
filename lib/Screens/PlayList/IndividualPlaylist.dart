@@ -26,6 +26,8 @@ class _IndividualPlayListState extends State<IndividualPlayList> {
   @override
   Widget build(BuildContext context) {
     late List<SongModel> songsPlayList;
+    var screenHeight = MediaQuery.of(context).size.height;
+    var screenWidth = MediaQuery.of(context).size.width;
 
     return ValueListenableBuilder(
       valueListenable: Hive.box<SongsDataBase>('PlayListDb').listenable(),
@@ -39,7 +41,6 @@ class _IndividualPlayListState extends State<IndividualPlayList> {
               const Purple(),
               const BackdropWidget(),
               SizedBox(
-                height: double.infinity,
                 child: ListView(
                   children: [
                     Stack(children: [
@@ -50,15 +51,15 @@ class _IndividualPlayListState extends State<IndividualPlayList> {
                         ),
                         child: Image.asset(
                           widget.photo,
-                          width: double.infinity,
-                          height: 240,
+                          width: screenWidth,
+                          height: screenHeight * 0.3,
                           fit: BoxFit.cover,
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 30.0),
+                        padding: const EdgeInsets.only(top: 10.0),
                         child: SizedBox(
-                          height: 200,
+                          height: screenHeight * 0.27,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -140,7 +141,7 @@ class _IndividualPlayListState extends State<IndividualPlayList> {
                       child: SizedBox(
                         child: songsPlayList.isEmpty
                             ? SizedBox(
-                                height: 480,
+                                height: screenHeight * 0.65,
                                 child: Center(
                                     child: InkWell(
                                   onTap: () {

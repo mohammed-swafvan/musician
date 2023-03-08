@@ -56,6 +56,7 @@ Future<void> nowPlayingBottumSheet(BuildContext ctx, SongModel songs) async {
                           );
                           ScaffoldMessenger.of(ctx).showSnackBar(addedToFav);
                         }
+                        // ignore: invalid_use_of_protected_member, invalid_use_of_visible_for_testing_member
                         FavDbFun.favSongsNotifier.notifyListeners();
                       } else if (index == 2) {
                         Navigator.pop(ctx);

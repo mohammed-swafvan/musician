@@ -20,6 +20,7 @@ TextEditingController nameController = TextEditingController();
 class _PlayListsScreenState extends State<PlayListsScreen> {
   @override
   Widget build(BuildContext context) {
+    var screenHeight = MediaQuery.of(context).size.height;
     return ValueListenableBuilder(
       valueListenable: Hive.box<SongsDataBase>('PlayListDb').listenable(),
       builder: (context, Box<SongsDataBase> musicList, child) {
@@ -31,7 +32,7 @@ class _PlayListsScreenState extends State<PlayListsScreen> {
               const Purple(),
               const BackdropWidget(),
               SizedBox(
-                height: double.infinity,
+                height: screenHeight,
                 child: ListView(
                   children: [
                     Stack(
@@ -44,14 +45,14 @@ class _PlayListsScreenState extends State<PlayListsScreen> {
                           child: Image.network(
                             'https://wallpapercave.com/wp/wp6113045.jpg',
                             width: double.infinity,
-                            height: 230,
+                            height: screenHeight * 0.3,
                             fit: BoxFit.cover,
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 15.0),
+                          padding: const EdgeInsets.only(top: 10.0),
                           child: SizedBox(
-                            height: 200,
+                            height: screenHeight * 0.27,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -123,40 +124,34 @@ class _PlayListsScreenState extends State<PlayListsScreen> {
                         ),
                       ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10.0),
-                      child: SizedBox(
-                          child: Hive.box<SongsDataBase>('PlayListDb').isEmpty
-                              ? SizedBox(
-                                  height: 480,
-                                  child: Center(
-                                      child: InkWell(
-                                    onTap: () {
-                                      nameController.clear();
-                                      createNewPlayList(context, formKey);
-                                    },
-                                    child: SizedBox(
-                                      height: 130,
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: [
-                                          Icon(
-                                            Icons.add_circle_outline,
-                                            color: Colors.deepPurple[50],
-                                            size: 100,
-                                          ),
-                                          Text(
-                                            'Create Play List',
-                                            style: TextStyle(
-                                                fontSize: 22, color: Colors.deepPurple[100], fontWeight: FontWeight.w500),
-                                          )
-                                        ],
+                    SizedBox(
+                        child: Hive.box<SongsDataBase>('PlayListDb').isEmpty
+                            ? SizedBox(
+                                height: screenHeight * 0.65,
+                                child: Center(
+                                    child: InkWell(
+                                  onTap: () {
+                                    nameController.clear();
+                                    createNewPlayList(context, formKey);
+                                  },
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.add_circle_outline,
+                                        color: Colors.deepPurple[50],
+                                        size: 100,
                                       ),
-                                    ),
-                                  )),
-                                )
-                              : PlayListTile(musicList: musicList)),
-                    )
+                                      Text(
+                                        'Create Play List',
+                                        style:
+                                            TextStyle(fontSize: 22, color: Colors.deepPurple[100], fontWeight: FontWeight.w500),
+                                      )
+                                    ],
+                                  ),
+                                )),
+                              )
+                            : PlayListTile(musicList: musicList))
                   ],
                 ),
               )
@@ -210,7 +205,7 @@ Future createNewPlayList(BuildContext context, formKey) {
           ),
         ),
         const SizedBox(
-          height: 8,
+          height: 5,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.end,

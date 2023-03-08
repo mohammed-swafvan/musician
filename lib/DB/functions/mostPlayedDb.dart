@@ -11,6 +11,7 @@ class MostPlayedDb {
     final mostPlayedDb = await Hive.openBox('MostlyPlayed');
     await mostPlayedDb.add(songs);
     getMostPlayedSongs();
+    // ignore: invalid_use_of_protected_member, invalid_use_of_visible_for_testing_member
     mostPlayedNotifier.notifyListeners();
   }
 
@@ -18,6 +19,7 @@ class MostPlayedDb {
     final mostPlayedDb = await Hive.openBox('MostlyPlayed');
     mostlyPlayed = mostPlayedDb.values.toList();
     displayMostPlayedSongs();
+    // ignore: invalid_use_of_protected_member, invalid_use_of_visible_for_testing_member
     mostPlayedNotifier.notifyListeners();
   }
 

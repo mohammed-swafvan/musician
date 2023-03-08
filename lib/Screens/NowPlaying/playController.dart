@@ -27,6 +27,8 @@ class _PlaycontrollerState extends State<Playcontroller> {
 
   @override
   Widget build(BuildContext context) {
+    var screenHeight = MediaQuery.of(context).size.height;
+    var screenWidth = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
@@ -60,8 +62,8 @@ class _PlaycontrollerState extends State<Playcontroller> {
                 },
               )),
           SizedBox(
-            height: 70,
-            width: 70,
+            height: screenHeight * 0.1,
+            width: screenWidth * 0.19,
             child: widget.firstSong
                 ? IconButton(
                     onPressed: () {},
@@ -110,8 +112,8 @@ class _PlaycontrollerState extends State<Playcontroller> {
             ),
           ),
           SizedBox(
-            height: 70,
-            width: 70,
+            height: screenHeight * 0.1,
+            width: screenWidth * 0.19,
             child: widget.lastSong
                 ? const IconButton(
                     onPressed: null,

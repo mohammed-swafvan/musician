@@ -18,20 +18,22 @@ class _PlayListState extends State<PlayList> {
   int imageChanger = 1;
   @override
   Widget build(BuildContext context) {
+    var screenHeight = MediaQuery.of(context).size.height;
+    var screenWidth = MediaQuery.of(context).size.width;
     return ValueListenableBuilder(
       valueListenable: Hive.box<SongsDataBase>('PlayListdb').listenable(),
       builder: (context, Box<SongsDataBase> value, child) {
         return Hive.box<SongsDataBase>('PlayListDb').isEmpty || Hive.box<SongsDataBase>('PlayListDb').length < 4
             ? const NoPlayList()
             : SizedBox(
-                height: 250,
+                height: screenHeight * 0.32,
                 width: double.infinity,
                 child: Column(
                   children: [
-                    const SizedBox(
-                      height: 50,
+                    SizedBox(
+                      height: screenHeight * 0.06,
                       width: double.infinity,
-                      child: Padding(
+                      child: const Padding(
                         padding: EdgeInsets.only(left: 15),
                         child: Text(
                           'Musician',
@@ -62,7 +64,7 @@ class _PlayListState extends State<PlayList> {
                                         Navigator.push(context, MaterialPageRoute(builder: (context) => const PlayListsScreen()));
                                       },
                                       child: SizedBox(
-                                          width: 130,
+                                          width: screenWidth * 0.3,
                                           child: GestureDetector(
                                             onTap: () {
                                               Navigator.push(

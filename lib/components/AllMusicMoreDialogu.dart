@@ -19,7 +19,7 @@ showPlayListDialog(BuildContext context, SongModel songModel) {
           style: TextStyle(color: componentsColor, fontWeight: FontWeight.w500, fontSize: 18),
         ),
         content: SizedBox(
-          height: 200,
+          height: MediaQuery.of(context).size.height * 0.25,
           width: double.maxFinite,
           child: ValueListenableBuilder(
             valueListenable: Hive.box<SongsDataBase>('PlayListDb').listenable(),
@@ -118,6 +118,8 @@ showSongsDetails(BuildContext contextOne, SongModel songsDetails) {
   showDialog(
     context: contextOne,
     builder: (contextOne) {
+      var dialogHeight = MediaQuery.of(contextOne).size.height;
+      var dialogWidth = MediaQuery.of(contextOne).size.width;
       return AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         backgroundColor: Colors.deepPurple[50],
@@ -126,14 +128,14 @@ showSongsDetails(BuildContext contextOne, SongModel songsDetails) {
           style: TextStyle(color: componentsColor, fontWeight: FontWeight.bold, fontSize: 18),
         ),
         content: SizedBox(
-          height: 270,
+          height: dialogHeight * 0.33,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               QueryArtworkWidget(
                   nullArtworkWidget: Container(
-                      height: 200,
-                      width: 200,
+                      height: dialogHeight * 0.25,
+                      width: dialogWidth * 0.5,
                       decoration:
                           BoxDecoration(color: const Color.fromARGB(255, 80, 20, 91), borderRadius: BorderRadius.circular(50)),
                       child: Icon(
@@ -143,21 +145,24 @@ showSongsDetails(BuildContext contextOne, SongModel songsDetails) {
                       )),
                   keepOldArtwork: true,
                   artworkBorder: BorderRadius.circular(50),
-                  artworkHeight: 200,
-                  artworkWidth: 200,
+                  artworkHeight: dialogHeight * 0.25,
+                  artworkWidth: dialogWidth * 0.5,
                   id: songsDetails.id,
                   type: ArtworkType.AUDIO),
+              const SizedBox(
+                height: 10,
+              ),
               Row(
                 children: [
                   SizedBox(
-                    width: 60,
+                    width: dialogWidth * 0.2,
                     child: Text(
                       'Album : ',
                       style: TextStyle(color: componentsColor, fontWeight: FontWeight.bold),
                     ),
                   ),
                   SizedBox(
-                    width: 170,
+                    width: dialogWidth * 0.4,
                     child: TextScroll(
                       songsDetails.title,
                       style: TextStyle(color: Colors.deepPurple[500], fontWeight: FontWeight.w500),
@@ -166,17 +171,20 @@ showSongsDetails(BuildContext contextOne, SongModel songsDetails) {
                   )
                 ],
               ),
+              const SizedBox(
+                height: 10,
+              ),
               Row(
                 children: [
                   SizedBox(
-                    width: 60,
+                    width: dialogWidth * 0.2,
                     child: Text(
                       'Artist   : ',
                       style: TextStyle(color: componentsColor, fontWeight: FontWeight.bold),
                     ),
                   ),
                   SizedBox(
-                    width: 170,
+                    width: dialogWidth * 0.4,
                     child: TextScroll(
                       songsDetails.artist.toString() == "<unknown>" ? 'Unknown Artist' : songsDetails.artist.toString(),
                       style: TextStyle(color: Colors.deepPurple[500], fontWeight: FontWeight.w500),

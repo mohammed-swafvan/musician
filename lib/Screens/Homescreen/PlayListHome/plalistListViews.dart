@@ -18,10 +18,11 @@ class PlalistListViews extends StatefulWidget {
 class _PlalistListViewsState extends State<PlalistListViews> {
   @override
   Widget build(BuildContext context) {
+    var screenWidth = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: SizedBox(
-          width: 130,
+          width: screenWidth * 0.3,
           child: ValueListenableBuilder(
             valueListenable: Hive.box<SongsDataBase>('PlayListDb').listenable(),
             builder: (context, Box<SongsDataBase> musicList, child) {
