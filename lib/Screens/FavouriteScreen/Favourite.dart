@@ -31,8 +31,8 @@ class FavouriteScreen extends StatelessWidget {
                             bottomLeft: Radius.circular(30),
                             bottomRight: Radius.circular(30),
                           ),
-                          child: Image.network(
-                            'https://www.itl.cat/pngfile/big/15-157154_music-wallpaper-photo-on-wallpaper-hd-1191-x.jpg',
+                          child: Image.asset(
+                            'Assets/Images/favourite.webp',
                             width: double.infinity,
                             height: MediaQuery.of(context).size.height * 0.3,
                             fit: BoxFit.cover,

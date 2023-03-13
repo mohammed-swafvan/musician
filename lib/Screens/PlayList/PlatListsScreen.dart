@@ -42,8 +42,8 @@ class _PlayListsScreenState extends State<PlayListsScreen> {
                             bottomLeft: Radius.circular(30),
                             bottomRight: Radius.circular(30),
                           ),
-                          child: Image.network(
-                            'https://wallpapercave.com/wp/wp6113045.jpg',
+                          child: Image.asset(
+                            'Assets/Images/lady with headset.jpeg',
                             width: double.infinity,
                             height: screenHeight * 0.3,
                             fit: BoxFit.cover,
