@@ -31,6 +31,8 @@ class _ListTileWidgetState extends State<ListTileWidget> {
   List<SongModel> allSongs = [];
   @override
   Widget build(BuildContext context) {
+    var screenHeight = MediaQuery.of(context).size.height;
+    var screenWidth = MediaQuery.of(context).size.width;
     return ListView.builder(
       shrinkWrap: true,
       itemBuilder: ((context, index) {
@@ -40,8 +42,8 @@ class _ListTileWidgetState extends State<ListTileWidget> {
           minVerticalPadding: 20,
           leading: QueryArtworkWidget(
               nullArtworkWidget: Container(
-                  height: 55,
-                  width: 55,
+                  height: screenHeight * 0.09,
+                  width: screenWidth * 0.14,
                   decoration:
                       BoxDecoration(color: const Color.fromARGB(255, 80, 20, 91), borderRadius: BorderRadius.circular(10)),
                   child: Icon(
@@ -49,8 +51,8 @@ class _ListTileWidgetState extends State<ListTileWidget> {
                     size: 30,
                     color: Colors.purple[100],
                   )),
-              artworkHeight: 55,
-              artworkWidth: 55,
+              artworkHeight: screenHeight * 0.09,
+              artworkWidth: screenWidth * 0.14,
               artworkBorder: BorderRadius.circular(10),
               id: widget.songModel[index].id,
               type: ArtworkType.AUDIO),
