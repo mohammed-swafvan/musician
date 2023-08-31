@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:musician/controller/Provider/playlists/playlist_provider.dart';
 import 'package:musician/controller/core/themes/usually_colors.dart';
@@ -107,6 +106,11 @@ class AddSongsToPlayList extends StatelessWidget {
                               ),
                               trailing: value.isContainInPlayList(playList, item.data![index])
                                   ? IconButton(
+                                      icon: const Icon(
+                                        Icons.add,
+                                        color: Colors.white70,
+                                        size: 26,
+                                      ),
                                       onPressed: () {
                                         GetAllSongController.songscopy = item.data!;
                                         value.songsToPlayList(
@@ -115,20 +119,17 @@ class AddSongsToPlayList extends StatelessWidget {
                                           context,
                                         );
                                       },
-                                      icon: const Icon(
-                                        Icons.add,
-                                        color: Colors.white70,
-                                        size: 26,
-                                      ))
+                                    )
                                   : IconButton(
-                                      onPressed: () {
-                                        value.songDeletedFromPlaylist(item.data![index], playList, context);
-                                      },
                                       icon: const Icon(
                                         Icons.remove,
                                         color: Colors.white70,
                                         size: 26,
-                                      )),
+                                      ),
+                                      onPressed: () {
+                                        value.songDeletedFromPlaylist(item.data![index], playList, context);
+                                      },
+                                    ),
                               onTap: () {},
                             );
                           });

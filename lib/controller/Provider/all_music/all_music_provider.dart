@@ -9,9 +9,10 @@ class AllMusicProvider with ChangeNotifier {
       bool permissionStatus = await audioQuery.permissionsStatus();
       if (!permissionStatus) {
         await audioQuery.permissionsRequest();
+        notifyListeners();
       }
-      Permission.storage.request();
-      notifyListeners();
     }
+    Permission.storage.request();
+    notifyListeners();
   }
 }

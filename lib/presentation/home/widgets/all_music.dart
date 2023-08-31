@@ -28,9 +28,9 @@ class AllMusic extends StatelessWidget {
             );
           }
           if (item.data!.isEmpty) {
-            return Row(
+            return const Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
+              children: [
                 Text(
                   'No Songs Founded',
                   style: TextStyle(color: Colors.white, fontSize: 20),

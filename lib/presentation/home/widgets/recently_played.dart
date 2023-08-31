@@ -41,8 +41,8 @@ class RecentlyPlayed extends StatelessWidget {
                     );
                   }
                   if (item.data!.isEmpty) {
-                    return Column(
-                      children: const [
+                    return const Column(
+                      children:  [
                         Text(
                           'No Recently Played Songs',
                           style: TextStyle(color: Colors.white, fontSize: 20),

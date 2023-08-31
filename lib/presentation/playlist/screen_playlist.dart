@@ -96,8 +96,8 @@ class PlayListsScreen extends StatelessWidget {
                                         onTap: () {
                                           createNewPlayList(context, palylistProvider.formKey, palylistProvider.nameController);
                                         },
-                                        child: Row(
-                                          children: const [
+                                        child: const Row(
+                                          children:  [
                                             Icon(
                                               Icons.playlist_add,
                                               size: 30,

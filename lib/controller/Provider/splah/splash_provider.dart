@@ -11,4 +11,5 @@ class SplashProvider with ChangeNotifier {
       builder: (context) => const HomeScreen(),
     ));
   }
+
 }

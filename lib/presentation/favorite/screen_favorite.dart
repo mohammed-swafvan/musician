@@ -62,10 +62,10 @@ class FavouriteScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 170, left: 20),
+                        const Padding(
+                          padding: EdgeInsets.only(top: 170, left: 20),
                           child: Row(
-                            children: const [
+                            children: [
                               Icon(
                                 Icons.favorite,
                                 color: Colors.red,

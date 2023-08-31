@@ -19,11 +19,11 @@ class SettingsSideBar extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.only(bottom: 50, top: 20),
           child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            SizedBox(
+            const SizedBox(
                 width: double.infinity,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children:  [
                     Text(
                       '   Settings',
                       style: TextStyle(
@@ -107,8 +107,8 @@ class SettingsSideBar extends StatelessWidget {
                 itemCount: settingsList.length,
               ),
             ),
-            Column(
-              children: const [
+            const Column(
+              children:  [
                 Text('Version',
                     style: TextStyle(
                       color: Colors.white54,

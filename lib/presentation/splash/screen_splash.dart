@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:musician/controller/Provider/splah/splash_provider.dart';
 import 'package:musician/controller/core/themes/usually_colors.dart';
