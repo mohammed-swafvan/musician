@@ -26,7 +26,7 @@ class MostPlayed extends StatelessWidget {
               return const Center(
                 child: Text(
                   'No Most Played Songs',
-                  style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w500),
+                  style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w500),
                 ),
               );
             } else {

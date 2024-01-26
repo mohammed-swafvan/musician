@@ -25,7 +25,7 @@ class RecentlyPlayed extends StatelessWidget {
               return const Center(
                 child: Text(
                   'No Recently Played Songs',
-                  style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w500),
+                  style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w500),
                 ),
               );
             } else {
@@ -42,7 +42,7 @@ class RecentlyPlayed extends StatelessWidget {
                   }
                   if (item.data!.isEmpty) {
                     return const Column(
-                      children:  [
+                      children: [
                         Text(
                           'No Recently Played Songs',
                           style: TextStyle(color: Colors.white, fontSize: 20),

@@ -18,13 +18,20 @@ class AllMusic extends StatelessWidget {
       allMusicProvider.requestStoragePermission();
     });
     final favProvider = Provider.of<FavoriteProvider>(context, listen: false);
-    return FutureBuilder<List<SongModel>>(
-        future: allMusicProvider.audioQuery.querySongs(
-            sortType: null, orderType: OrderType.ASC_OR_SMALLER, uriType: UriType.EXTERNAL, ignoreCase: true),
+    return StreamBuilder<List<SongModel>>(
+        stream: allMusicProvider.mp3SongsStream,
         builder: ((context, item) {
-          if (item.data == null) {
+          if (item.connectionState == ConnectionState.waiting) {
             return const Center(
               child: CircularProgressIndicator(),
+            );
+          }
+          if (item.data == null) {
+            return const Center(
+              child: Text(
+                  "Didn't get permission",
+                  style: TextStyle(color: Colors.white, fontSize: 16),
+                ),
             );
           }
           if (item.data!.isEmpty) {
@@ -33,7 +40,7 @@ class AllMusic extends StatelessWidget {
               children: [
                 Text(
                   'No Songs Founded',
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+                  style: TextStyle(color: Colors.white, fontSize: 16),
                 ),
               ],
             );

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:musician/db/Models/Song_model.dart';
+import 'package:musician/models/Song_model.dart';
 import 'package:musician/presentation/playlist/widgets/indtividual_platlist.dart';
 import 'package:text_scroll/text_scroll.dart';
-
 
 class PlalistListViews extends StatelessWidget {
   const PlalistListViews({super.key, required this.index, required this.data, required this.imageChanger});
@@ -35,20 +34,18 @@ class PlalistListViews extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Image.asset(
-                        'Assets/Images/image-$imageChanger.jpeg',
-                        fit: BoxFit.cover,
-                        height: 130,
-                        width: double.infinity,
+                    Expanded(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Image.asset(
+                          'Assets/Images/image-$imageChanger.jpeg',
+                          fit: BoxFit.cover,
+                          width: double.infinity,
+                        ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 7.0, right: 8),
+                      padding: const EdgeInsets.only(top: 4, left: 7.0, right: 8),
                       child: TextScroll(
                         data.name,
                         style: const TextStyle(fontWeight: FontWeight.w500, color: Colors.white, fontSize: 17),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:musician/models/Song_model.dart';
 import 'package:musician/controller/Provider/playlists/playlist_provider.dart';
 import 'package:musician/controller/core/themes/usually_colors.dart';
 import 'package:musician/controller/core/themes/back_gound_design.dart';
 import 'package:musician/controller/get_all_music_controller.dart';
-import 'package:musician/db/Models/Song_model.dart';
 import 'package:musician/presentation/widgets/back_drop_widget.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 import 'package:provider/provider.dart';

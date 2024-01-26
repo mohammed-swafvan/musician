@@ -74,7 +74,10 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
                       leading: IconButton(
                         onPressed: () {
                           Navigator.pushAndRemoveUntil(
-                              context, MaterialPageRoute(builder: (context) => const HomeScreen()), (route) => false);
+                            context,
+                            MaterialPageRoute(builder: (context) => const HomeScreen()),
+                            (route) => false,
+                          );
                         },
                         icon: const Icon(
                           Icons.arrow_back_ios_new,

@@ -1,15 +1,15 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:musician/models/Song_model.dart';
 import 'package:musician/controller/core/themes/usually_colors.dart';
-import 'package:musician/db/Models/Song_model.dart';
 import 'package:musician/presentation/home/widgets/PlayListHome/empty_playlist.dart';
 import 'package:musician/presentation/home/widgets/PlayListHome/playlist_view.dart';
 import 'package:musician/presentation/playlist/screen_playlist.dart';
 
 // ignore: must_be_immutable
 class PlayList extends StatelessWidget {
-   PlayList({super.key});
+  PlayList({super.key});
 
   int imageChanger = 1;
 
@@ -23,31 +23,26 @@ class PlayList extends StatelessWidget {
         return Hive.box<SongsDataBase>('PlayListDb').isEmpty || Hive.box<SongsDataBase>('PlayListDb').length < 4
             ? const NoPlayList()
             : SizedBox(
-                height: screenHeight * 0.32,
+                height: screenHeight * 0.28,
                 width: double.infinity,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      height: screenHeight * 0.06,
-                      width: double.infinity,
-                      child: const Padding(
-                        padding: EdgeInsets.only(left: 15),
-                        child: Text(
-                          'Musician',
-                          style: TextStyle(
-                            shadows: [Shadow(offset: Offset(4.0, 4.0), blurRadius: 3.0, color: Colors.white10)],
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                            fontSize: 38,
-                          ),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 15),
+                      child: Text(
+                        'Musician',
+                        style: TextStyle(
+                          shadows: [Shadow(offset: Offset(4.0, 4.0), blurRadius: 3.0, color: Colors.white10)],
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          fontSize: 38,
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10.0, left: 8),
-                      child: SizedBox(
-                        width: double.infinity,
-                        height: 180,
+                    Expanded(
+                      child: Container(
+                        padding: const EdgeInsets.only(left: 8),
                         child: ListView.builder(
                           shrinkWrap: true,
                           itemBuilder: ((context, index) {
@@ -70,25 +65,23 @@ class PlayList extends StatelessWidget {
                                             child: Column(
                                               crossAxisAlignment: CrossAxisAlignment.start,
                                               children: [
-                                                ClipRRect(
-                                                    borderRadius: BorderRadius.circular(20),
-                                                    child: Container(
-                                                      height: 130,
-                                                      width: double.infinity,
-                                                      decoration: BoxDecoration(color: componentsColor),
-                                                      child: Center(
-                                                        child: Icon(
-                                                          Icons.menu,
-                                                          size: 50,
-                                                          color: Colors.deepPurple[100],
+                                                Expanded(
+                                                  child: ClipRRect(
+                                                      borderRadius: BorderRadius.circular(20),
+                                                      child: Container(
+                                                        width: double.infinity,
+                                                        decoration: BoxDecoration(color: componentsColor),
+                                                        child: Center(
+                                                          child: Icon(
+                                                            Icons.menu,
+                                                            size: 50,
+                                                            color: Colors.deepPurple[100],
+                                                          ),
                                                         ),
-                                                      ),
-                                                    )),
-                                                const SizedBox(
-                                                  height: 10,
+                                                      )),
                                                 ),
                                                 const Padding(
-                                                  padding: EdgeInsets.only(left: 7.0),
+                                                  padding: EdgeInsets.only(top: 4, left: 7),
                                                   child: Text(
                                                     'More',
                                                     style:
@@ -113,7 +106,8 @@ class PlayList extends StatelessWidget {
                       ),
                     )
                   ],
-                ));
+                ),
+              );
       },
     );
   }

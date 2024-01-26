@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:musician/presentation/home/screen_home.dart';
 
 import '../../favorite/screen_favorite.dart';
 import '../../search/screen_search.dart';
 import 'PlayListHome/playlists.dart';
 
 class SliverAppBarWidget extends StatelessWidget {
-  const SliverAppBarWidget({super.key});
+  const SliverAppBarWidget({super.key, required this.settingsGlobalKey});
+  final GlobalKey<ScaffoldState> settingsGlobalKey;
 
   @override
   Widget build(BuildContext context) {
     var screenHeight = MediaQuery.of(context).size.height;
     return SliverAppBar(
       backgroundColor: Colors.transparent,
-      collapsedHeight: screenHeight * 0.40,
-      expandedHeight: screenHeight * 0.40,
+      collapsedHeight: screenHeight * 0.36,
+      expandedHeight: screenHeight * 0.36,
       leading: IconButton(
         onPressed: () {
           settingsGlobalKey.currentState!.openDrawer();
@@ -57,7 +57,7 @@ class SliverAppBarWidget extends StatelessWidget {
               ],
             ),
           ),
-           PlayList(),
+          PlayList(),
         ],
       ),
     );
@@ -70,28 +70,54 @@ class SliverPresistendHeaderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverPersistentHeader(
-        floating: true,
-        delegate: MyDelegate(
-          const TabBar(
-            tabs: [
-              Tab(
-                text: 'All music',
-              ),
-              Tab(
-                text: 'Recently Played',
-              ),
-              Tab(
-                text: 'Mostly Played',
-              ),
-            ],
-            indicator: UnderlineTabIndicator(
-              borderSide: BorderSide(
-                color: Colors.purple,
-                width: 3,
-              ),
+      floating: true,
+      delegate: MyDelegate(
+        const TabBar(
+          tabs: [
+            Tab(
+              text: 'All music',
             ),
-            indicatorSize: TabBarIndicatorSize.label,
+            Tab(
+              text: 'Recently Played',
+            ),
+            Tab(
+              text: 'Mostly Played',
+            ),
+          ],
+          dividerColor: Colors.transparent,
+          labelColor: Colors.white,
+          unselectedLabelColor: Colors.grey,
+          indicator: UnderlineTabIndicator(
+            borderSide: BorderSide(
+              color: Colors.purple,
+              width: 3,
+            ),
           ),
-        ));
+          indicatorSize: TabBarIndicatorSize.label,
+        ),
+      ),
+    );
+  }
+}
+
+class MyDelegate extends SliverPersistentHeaderDelegate {
+  MyDelegate(this.tabBar);
+
+  final TabBar tabBar;
+
+  @override
+  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return tabBar;
+  }
+
+  @override
+  double get maxExtent => tabBar.preferredSize.height;
+
+  @override
+  double get minExtent => tabBar.preferredSize.height;
+
+  @override
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
+    return false;
   }
 }

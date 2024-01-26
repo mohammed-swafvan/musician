@@ -2,8 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:musician/models/Song_model.dart';
 import 'package:musician/controller/core/components/playlist_more.dart';
-import 'package:musician/db/Models/Song_model.dart';
 import 'indtividual_platlist.dart';
 
 // ignore: must_be_immutable

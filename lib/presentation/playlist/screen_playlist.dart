@@ -1,7 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:musician/db/Models/Song_model.dart';
+import 'package:musician/models/Song_model.dart';
+
 import 'package:musician/presentation/playlist/widgets/playlist_tile.dart';
 import 'package:musician/presentation/widgets/back_drop_widget.dart';
 import 'package:provider/provider.dart';
@@ -97,7 +97,7 @@ class PlayListsScreen extends StatelessWidget {
                                           createNewPlayList(context, palylistProvider.formKey, palylistProvider.nameController);
                                         },
                                         child: const Row(
-                                          children:  [
+                                          children: [
                                             Icon(
                                               Icons.playlist_add,
                                               size: 30,
@@ -126,7 +126,6 @@ class PlayListsScreen extends StatelessWidget {
                                 child: Center(
                                     child: InkWell(
                                   onTap: () {
-                                    palylistProvider.nameController.clear();
                                     createNewPlayList(context, palylistProvider.formKey, palylistProvider.nameController);
                                   },
                                   child: Column(
@@ -135,12 +134,13 @@ class PlayListsScreen extends StatelessWidget {
                                       Icon(
                                         Icons.add_circle_outline,
                                         color: Colors.deepPurple[50],
-                                        size: 100,
+                                        size: 60,
                                       ),
+                                      const SizedBox(height: 4),
                                       Text(
                                         'Create Play List',
                                         style:
-                                            TextStyle(fontSize: 22, color: Colors.deepPurple[100], fontWeight: FontWeight.w500),
+                                            TextStyle(fontSize: 18, color: Colors.deepPurple[100], fontWeight: FontWeight.w500),
                                       )
                                     ],
                                   ),
@@ -216,9 +216,9 @@ Future createNewPlayList(BuildContext context, formKey, TextEditingController na
               ),
             ),
             SimpleDialogOption(
-              onPressed: () {
+              onPressed: () async {
                 if (formKey.currentState!.validate()) {
-                  saveButtonClicked(context, nameController);
+                  await saveButtonClicked(context, nameController);
                 }
               },
               child: Text(

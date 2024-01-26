@@ -1,9 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:musician/models/Song_model.dart';
 import 'package:musician/controller/Provider/playlists/playlist_provider.dart';
 import 'package:musician/controller/core/themes/usually_colors.dart';
-import 'package:musician/db/Models/Song_model.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 import 'package:provider/provider.dart';
 import 'package:text_scroll/text_scroll.dart';

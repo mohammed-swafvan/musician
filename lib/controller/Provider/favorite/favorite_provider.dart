@@ -18,7 +18,6 @@ class FavoriteProvider with ChangeNotifier {
 
   isFav(SongModel song) {
     if (musicDb.values.contains(song.id)) {
-      notifyListeners();
       return true;
     }
     return false;

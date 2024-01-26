@@ -4,13 +4,11 @@ import 'package:musician/controller/get_all_music_controller.dart';
 class PlayControlsProvider with ChangeNotifier {
   bool songIsPlaying = true;
 
-  bool isPlaying() {
-    notifyListeners();
-    return songIsPlaying;
-  }
+  bool get isPlaying => songIsPlaying;
 
   void playPause() {
     songIsPlaying = !songIsPlaying;
+    notifyListeners();
   }
 
   void turnOnshuffleMode() {

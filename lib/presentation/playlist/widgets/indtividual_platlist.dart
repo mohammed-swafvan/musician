@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:musician/models/Song_model.dart';
 import 'package:musician/controller/Provider/song_model_provider.dart';
 import 'package:musician/controller/get_all_music_controller.dart';
 import 'package:musician/controller/core/themes/usually_colors.dart';
-import 'package:musician/db/Models/Song_model.dart';
 import 'package:musician/presentation/playlist/widgets/add_song_playlist.dart';
 import 'package:provider/provider.dart';
 import 'package:musician/presentation/widgets/back_drop_widget.dart';
@@ -89,40 +89,35 @@ class IndividualPlayList extends StatelessWidget {
                                 padding: const EdgeInsets.only(left: 30.0),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    SizedBox(
-                                      height: 35,
-                                      child: Text(
-                                        playList.name,
-                                        style: const TextStyle(
-                                          shadows: [Shadow(offset: Offset(4.0, 4.0), blurRadius: 3.0, color: Colors.white10)],
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.white,
-                                          fontSize: 38,
-                                        ),
+                                    Text(
+                                      playList.name,
+                                      style: const TextStyle(
+                                        shadows: [Shadow(offset: Offset(4.0, 4.0), blurRadius: 3.0, color: Colors.white10)],
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.white,
+                                        fontSize: 38,
                                       ),
                                     ),
-                                    SizedBox(
-                                      height: 33,
-                                      child: Row(
-                                        children: [
-                                          const Text('Play List  ',
-                                              style: TextStyle(
-                                                color: Colors.white54,
-                                                fontWeight: FontWeight.w500,
-                                              )),
-                                          const Text(
-                                            "\u2022 ",
-                                            style: TextStyle(fontSize: 30, color: Colors.white),
+                                    Row(
+                                      children: [
+                                        const Text(
+                                          'Play List  ',
+                                          style: TextStyle(
+                                            color: Colors.white70,
+                                            fontWeight: FontWeight.w700,
                                           ),
-                                          Text("${songsPlayList.length} Songs  ",
-                                              style: const TextStyle(
-                                                color: Colors.white54,
-                                                fontWeight: FontWeight.w400,
-                                              )),
-                                        ],
-                                      ),
-                                    )
+                                        ),
+                                        Text(
+                                          "${songsPlayList.length} Songs  ",
+                                          style: const TextStyle(
+                                            color: Colors.white60,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ],
                                 ),
                               )
@@ -155,12 +150,12 @@ class IndividualPlayList extends StatelessWidget {
                                       Icon(
                                         Icons.add_circle_outline,
                                         color: Colors.deepPurple[50],
-                                        size: 100,
+                                        size: 60,
                                       ),
                                       Text(
                                         'Add Songs',
                                         style:
-                                            TextStyle(fontSize: 22, color: Colors.deepPurple[100], fontWeight: FontWeight.w500),
+                                            TextStyle(fontSize: 18, color: Colors.deepPurple[100], fontWeight: FontWeight.w500),
                                       )
                                     ],
                                   ),

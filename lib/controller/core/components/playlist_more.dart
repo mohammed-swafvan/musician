@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:musician/models/Song_model.dart';
 import 'package:musician/controller/core/list/list.dart';
 import 'package:musician/controller/Provider/playlists/playlist_provider.dart';
 import 'package:musician/controller/core/themes/usually_colors.dart';
-import 'package:musician/db/Models/Song_model.dart';
 import 'package:provider/provider.dart';
 
 Future<void> playListMore(BuildContext context, indexes, musicList, formKey, playListNameController, data) async {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:just_audio_background/just_audio_background.dart';
+import 'package:musician/models/Song_model.dart';
 import 'package:musician/controller/Provider/favorite/favorite_provider.dart';
 import 'package:musician/controller/Provider/mostly_played/mostly_played_provider.dart';
 import 'package:musician/controller/Provider/now_playing/play_controls_provider.dart';
@@ -10,7 +11,6 @@ import 'package:musician/controller/Provider/search/search_provider.dart';
 import 'package:musician/controller/Provider/song_model_provider.dart';
 import 'package:musician/controller/Provider/splah/splash_provider.dart';
 import 'package:musician/controller/core/themes/usually_colors.dart';
-import 'package:musician/db/Models/Song_model.dart';
 import 'package:musician/presentation/splash/screen_splash.dart';
 import 'package:musician/controller/Provider/all_music/all_music_provider.dart';
 import 'package:provider/provider.dart';
@@ -57,6 +57,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
+          useMaterial3: true,
           primaryColor: componentsColor,
         ),
         home: const SplashScreen(),

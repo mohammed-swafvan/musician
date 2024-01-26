@@ -96,7 +96,7 @@ class Playcontroller extends StatelessWidget {
                   value.playPause();
                 },
                 icon: Icon(
-                  value.isPlaying() == true ? Icons.pause_rounded : Icons.play_arrow_rounded,
+                  value.isPlaying == true ? Icons.pause_rounded : Icons.play_arrow_rounded,
                   size: 45,
                 ),
               ),
