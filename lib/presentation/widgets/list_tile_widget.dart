@@ -67,120 +67,121 @@ class ListTileWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               IconButton(
-                  onPressed: () {
-                    showModalBottomSheet(
-                        shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20))),
-                        backgroundColor: componentsColor,
-                        context: context,
-                        builder: (context) {
-                          return FractionallySizedBox(
-                            heightFactor: 0.5,
-                            child: Padding(
-                              padding: const EdgeInsets.only(top: 10.0),
-                              child: Column(
-                                children: [
-                                  Consumer<FavoriteProvider>(
-                                    builder: (context, value, child) {
-                                      return ListTile(
-                                            leading: value.isFav(songModel[index])
-                                                ? Icon(
-                                                    Icons.favorite,
-                                                    color: Colors.deepPurple[100],
-                                                    size: 30,
-                                                  )
-                                                : Icon(
-                                                    Icons.heart_broken_outlined,
-                                                    color: Colors.deepPurple[50],
-                                                    size: 30,
-                                                  ),
-                                            title: value.isFav(songModel[index])
-                                                ? Text(
-                                                    'Remove from favourites',
-                                                    style: TextStyle(
-                                                        color: Colors.deepPurple[50], fontSize: 20, fontWeight: FontWeight.w500),
-                                                  )
-                                                : Text(
-                                                    'Add to favourites',
-                                                    style: TextStyle(
-                                                        color: Colors.deepPurple[50], fontSize: 20, fontWeight: FontWeight.w500),
-                                                  ),
-                                            onTap: () {
-                                              Navigator.pop(context);
-                                              if (value.isFav(songModel[index])) {
-                                                value.deleteSong(songModel[index].id);
-                                                final removeFromFav = SnackBar(
-                                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                                                  behavior: SnackBarBehavior.floating,
-                                                  backgroundColor: componentsColor,
-                                                  content: Text(
-                                                    'Song Removed From Favourites',
-                                                    textAlign: TextAlign.center,
-                                                    style: TextStyle(color: Colors.deepPurple[50]),
-                                                  ),
-                                                  duration: const Duration(seconds: 1),
-                                                );
-                                                ScaffoldMessenger.of(context).showSnackBar(removeFromFav);
-                                              } else {
-                                                value.addSongs(songModel[index]);
-                                                final addedToFav = SnackBar(
-                                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                                                  behavior: SnackBarBehavior.floating,
-                                                  backgroundColor: componentsColor,
-                                                  content: Text(
-                                                    'Song Added To Favourite',
-                                                    textAlign: TextAlign.center,
-                                                    style: TextStyle(color: Colors.deepPurple[50]),
-                                                  ),
-                                                  duration: const Duration(seconds: 1),
-                                                );
-                                                ScaffoldMessenger.of(context).showSnackBar(addedToFav);
-                                              }
-                                            },
+                onPressed: () {
+                  showModalBottomSheet(
+                      shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20))),
+                      backgroundColor: componentsColor,
+                      context: context,
+                      builder: (context) {
+                        return FractionallySizedBox(
+                          heightFactor: 0.5,
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 10.0),
+                            child: Column(
+                              children: [
+                                Consumer<FavoriteProvider>(
+                                  builder: (context, value, child) {
+                                    return ListTile(
+                                      leading: value.isFav(songModel[index])
+                                          ? Icon(
+                                              Icons.favorite,
+                                              color: Colors.deepPurple[100],
+                                              size: 30,
+                                            )
+                                          : Icon(
+                                              Icons.heart_broken_outlined,
+                                              color: Colors.deepPurple[50],
+                                              size: 30,
+                                            ),
+                                      title: value.isFav(songModel[index])
+                                          ? Text(
+                                              'Remove from favourites',
+                                              style: TextStyle(
+                                                  color: Colors.deepPurple[50], fontSize: 20, fontWeight: FontWeight.w500),
+                                            )
+                                          : Text(
+                                              'Add to favourites',
+                                              style: TextStyle(
+                                                  color: Colors.deepPurple[50], fontSize: 20, fontWeight: FontWeight.w500),
+                                            ),
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                        if (value.isFav(songModel[index])) {
+                                          value.deleteSong(songModel[index].id);
+                                          final removeFromFav = SnackBar(
+                                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                                            behavior: SnackBarBehavior.floating,
+                                            backgroundColor: componentsColor,
+                                            content: Text(
+                                              'Song Removed From Favourites',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(color: Colors.deepPurple[50]),
+                                            ),
+                                            duration: const Duration(seconds: 1),
                                           );
-                                    },
+                                          ScaffoldMessenger.of(context).showSnackBar(removeFromFav);
+                                        } else {
+                                          value.addSongs(songModel[index]);
+                                          final addedToFav = SnackBar(
+                                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                                            behavior: SnackBarBehavior.floating,
+                                            backgroundColor: componentsColor,
+                                            content: Text(
+                                              'Song Added To Favourite',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(color: Colors.deepPurple[50]),
+                                            ),
+                                            duration: const Duration(seconds: 1),
+                                          );
+                                          ScaffoldMessenger.of(context).showSnackBar(addedToFav);
+                                        }
+                                      },
+                                    );
+                                  },
+                                ),
+                                ListTile(
+                                  leading: Icon(
+                                    Icons.playlist_add,
+                                    color: Colors.deepPurple[50],
+                                    size: 30,
                                   ),
-                                  ListTile(
-                                    leading: Icon(
-                                      Icons.playlist_add,
-                                      color: Colors.deepPurple[50],
-                                      size: 30,
-                                    ),
-                                    title: Text(
-                                      'Add to PlayList',
-                                      style: TextStyle(color: Colors.deepPurple[50], fontSize: 20, fontWeight: FontWeight.w500),
-                                    ),
-                                    onTap: () {
-                                      Navigator.pop(context);
-                                      showPlayListDialog(context, songModel[index]);
-                                    },
+                                  title: Text(
+                                    'Add to PlayList',
+                                    style: TextStyle(color: Colors.deepPurple[50], fontSize: 20, fontWeight: FontWeight.w500),
                                   ),
-                                  ListTile(
-                                    leading: Icon(
-                                      Icons.error_outline,
-                                      color: Colors.deepPurple[50],
-                                      size: 30,
-                                    ),
-                                    title: Text(
-                                      'Song Info',
-                                      style: TextStyle(color: Colors.deepPurple[50], fontSize: 20, fontWeight: FontWeight.w500),
-                                    ),
-                                    onTap: () {
-                                      Navigator.pop(context);
-                                      showSongsDetails(context, songModel[index]);
-                                    },
+                                  onTap: () {
+                                    Navigator.pop(context);
+                                    showPlayListDialog(context, songModel[index]);
+                                  },
+                                ),
+                                ListTile(
+                                  leading: Icon(
+                                    Icons.error_outline,
+                                    color: Colors.deepPurple[50],
+                                    size: 30,
                                   ),
-                                ],
-                              ),
+                                  title: Text(
+                                    'Song Info',
+                                    style: TextStyle(color: Colors.deepPurple[50], fontSize: 20, fontWeight: FontWeight.w500),
+                                  ),
+                                  onTap: () {
+                                    Navigator.pop(context);
+                                    showSongsDetails(context, songModel[index]);
+                                  },
+                                ),
+                              ],
                             ),
-                          );
-                        });
-                  },
-                  icon: const Icon(
-                    Icons.more_horiz,
-                    color: Colors.white70,
-                    size: 32,
-                  ))
+                          ),
+                        );
+                      });
+                },
+                icon: const Icon(
+                  Icons.more_horiz,
+                  color: Colors.white70,
+                  size: 32,
+                ),
+              )
             ],
           ),
           onTap: () {

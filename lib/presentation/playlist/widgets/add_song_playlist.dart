@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:musician/controller/Provider/all_music/all_music_provider.dart';
 import 'package:musician/models/Song_model.dart';
 import 'package:musician/controller/Provider/playlists/playlist_provider.dart';
 import 'package:musician/controller/core/themes/usually_colors.dart';
@@ -8,24 +9,22 @@ import 'package:musician/presentation/widgets/back_drop_widget.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 import 'package:provider/provider.dart';
 
-// ignore: must_be_immutable
 class AddSongsToPlayList extends StatelessWidget {
-  AddSongsToPlayList({super.key, required this.playList});
+  const AddSongsToPlayList({super.key, required this.playList});
 
   final SongsDataBase playList;
-
-  bool isPlaying = true;
-  final OnAudioQuery audioQuery = OnAudioQuery();
-
   @override
   Widget build(BuildContext context) {
     var screenHeight = MediaQuery.of(context).size.height;
     var screenWidth = MediaQuery.of(context).size.width;
+    AllMusicProvider allMusicProvider = Provider.of<AllMusicProvider>(context, listen: false);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      allMusicProvider.requestStoragePermission();
+    });
     return Scaffold(
         backgroundColor: bgColor,
-        body: FutureBuilder<List<SongModel>>(
-          future: audioQuery.querySongs(
-              sortType: null, orderType: OrderType.ASC_OR_SMALLER, uriType: UriType.EXTERNAL, ignoreCase: true),
+        body: StreamBuilder<List<SongModel>>(
+          stream: allMusicProvider.mp3SongsStream,
           builder: (context, item) {
             if (item.data == null) {
               return const Center(
@@ -104,7 +103,7 @@ class AddSongsToPlayList extends StatelessWidget {
                                     overflow: TextOverflow.ellipsis,
                                     fontSize: 12),
                               ),
-                              trailing: value.isContainInPlayList(playList, item.data![index])
+                              trailing: !value.isContainInPlayList(playList, item.data![index])
                                   ? IconButton(
                                       icon: const Icon(
                                         Icons.add,

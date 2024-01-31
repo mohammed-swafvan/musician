@@ -236,11 +236,11 @@ Future createNewPlayList(BuildContext context, formKey, TextEditingController na
 Future<void> saveButtonClicked(context, TextEditingController nameController) async {
   final playListProvider = Provider.of<PlayListProvider>(context, listen: false);
   final name = nameController.text.trim();
-  final music = SongsDataBase(name: name, songId: []);
-  final datas = playListProvider.playListDb.values.map((e) => e.name.trim()).toList();
+  final SongsDataBase newPlayList = SongsDataBase(name: name, songId: []);
+  final List<String> playListName = playListProvider.playListDb.values.map((e) => e.name.trim()).toList();
   if (name.isEmpty) {
     return;
-  } else if (datas.contains(music.name)) {
+  } else if (playListName.contains(newPlayList.name)) {
     final playListExistSnackBar = SnackBar(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
@@ -256,7 +256,7 @@ Future<void> saveButtonClicked(context, TextEditingController nameController) as
     ScaffoldMessenger.of(context).showSnackBar(playListExistSnackBar);
     Navigator.of(context).pop();
   } else {
-    playListProvider.addPlayList(music);
+    playListProvider.addPlayList(newPlayList);
     final playListCreatedSnackBar = SnackBar(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),

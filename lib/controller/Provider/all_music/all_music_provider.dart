@@ -15,10 +15,12 @@ class AllMusicProvider with ChangeNotifier {
       bool permissionStatus = await audioQuery.permissionsStatus();
       if (!permissionStatus) {
         await audioQuery.permissionsRequest();
+      }else{
+        await queryMp3Songs();
       }
       notifyListeners();
     }
-    await queryMp3Songs();
+    
   }
 
   Future<void> queryMp3Songs() async {

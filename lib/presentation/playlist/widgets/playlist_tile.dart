@@ -41,13 +41,15 @@ class PlayListTile extends StatelessWidget {
                     child: ListTile(
                       onTap: () {
                         Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: ((context) => IndividualPlayList(
-                                      playList: data,
-                                      indexes: index,
-                                      photo: image,
-                                    ))));
+                          context,
+                          MaterialPageRoute(
+                            builder: ((context) => IndividualPlayList(
+                                  playList: data,
+                                  indexes: index,
+                                  photo: image,
+                                )),
+                          ),
+                        );
                       },
                       leading: ClipRRect(
                         borderRadius: BorderRadius.circular(15),

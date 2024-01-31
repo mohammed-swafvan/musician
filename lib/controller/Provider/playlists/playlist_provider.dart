@@ -71,7 +71,7 @@ class PlayListProvider with ChangeNotifier {
   }
 
   bool isContainInPlayList(SongsDataBase playList, SongModel item) {
-    notifyListeners();
-    return !playList.isValue(item.id);
+    bool isSongExist = playList.isValue(item.id);
+    return isSongExist;
   }
 }
