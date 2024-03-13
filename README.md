@@ -24,7 +24,7 @@ The Musician is provide users to seamless and enjoyable listening experience. It
 - organized music library.
 - custamizable playlists.
 - shuffle and repeat options.
-- quck access to recently played tracks.
+- quick access to recently played tracks.
 - background playback while using other apps.
 - offline playback.
 
