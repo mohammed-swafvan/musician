@@ -35,7 +35,9 @@ The Musician is provide users to seamless and enjoyable listening experience. It
 
 ## Screenshots
 
-
+<img src="screenshot0.png" alt="Screenshot 1" width="150" height="310"> <img src="screenshot1.png" alt="Screenshot 2" width="150" height="310">
+<img src="screenshot2.png" alt="Screenshot 3" width="150" height="310"> <img src="screenshot3.png" alt="Screenshot 4" width="150" height="310">
+<img src="screenshot4.png" alt="Screenshot 5" width="150" height="310"> <img src="screenshot5.png" alt="Screenshot 5" width="150" height="310">
 
 
 ## Contributing
