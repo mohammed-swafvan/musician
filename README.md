@@ -1,16 +1,48 @@
-# musician
+# Musician
 
-A new Flutter project.
+This application is a Music Player appliction using Flutter, optimized for Android devices, providing a responsive seamless experience on the platform. Implemented data retrieval from local storage, allowing user to access and manage their music library directly within the application.
 
-## Getting Started
+> <span style="color:grey">Warning: Musician still in development, constantly being optimized and isn't still stable enough to be used in production environments.</span>
 
-This project is a starting point for a Flutter application.
+## The Aim
 
-A few resources to get you started if this is your first Flutter project:
+The Musician is provide users to seamless and enjoyable listening experience. It aims to organize and play music efficiently, allowing users to easily navigate through their music library. Additionally, the Musician strives to offer features such as customizable playlist, high-quality audio playback, and intuitive user interfaces to enhance the overall music listening experience.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Technologies Used
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- flutter.
+- dart.
+- hive.
+- on_audio_query.
+- just_audio.
+- just_auio_background.
+- provider.
+
+## Features
+
+- seamless audio playback.
+- organized music library.
+- custamizable playlists.
+- shuffle and repeat options.
+- quck access to recently played tracks.
+- background playback while using other apps.
+- offline playback.
+
+## Deploy
+
+- [View On Amazon App Store](https://www.amazon.com/gp/product/B0CLYBXBKX)
+
+
+## Screenshots
+
+
+
+
+## Contributing
+
+Thank you for considering contributing to Musician.
+
+## License
+
+Musician is an open-source software application licensed under the [Privacy Policy Generator](https://www.freeprivacypolicy.com/live/d16abe81-6b84-4af9-a639-86df5af82aca)
+
